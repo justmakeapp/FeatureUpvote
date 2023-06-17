@@ -1,0 +1,8 @@
+strings:
+    inputs:
+        - Sources/FeatureUpvoteKit/Resources/en.lproj
+    outputs:
+        - templateName: structured-swift5
+          params:
+              publicAccess: true
+          output: Sources/FeatureUpvoteKit/L10n.swift
