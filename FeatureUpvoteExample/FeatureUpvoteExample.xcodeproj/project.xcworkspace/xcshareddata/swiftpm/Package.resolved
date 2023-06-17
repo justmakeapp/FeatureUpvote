@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "colorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/justmakeapp/ColorKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a624e45eaebcfe8e0bdb976a85ab3e070cefff86"
+      }
+    }
+  ],
+  "version" : 2
+}
