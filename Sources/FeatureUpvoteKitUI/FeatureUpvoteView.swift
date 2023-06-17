@@ -52,6 +52,7 @@ public struct FeatureUpvoteView<
                 }
             }
             .listRowBackground(Color.clear)
+            .listRowInsets(.init(top: 8, leading: 16, bottom: 8, trailing: 16))
         }
         .listStyle(.plain)
         .background(listBgColor)
