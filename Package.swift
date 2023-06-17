@@ -15,9 +15,6 @@ let package = Package(
             targets: ["FeatureUpvoteKitUI"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/justmakeapp/ColorKit", branch: "main"),
-    ],
     targets: [
         .target(
             name: "FeatureUpvoteKit"
@@ -25,7 +22,6 @@ let package = Package(
         .target(
             name: "FeatureUpvoteKitUI",
             dependencies: [
-                "ColorKit",
                 "FeatureUpvoteKit",
             ]
         ),

@@ -5,9 +5,13 @@
 //  Created by Long Vu on 17/06/2023.
 //
 
-import ColorKit
 import FeatureUpvoteKit
 import SwiftUI
+#if os(macOS)
+    import AppKit.NSColor
+#else
+    import UIKit.UIColor
+#endif
 
 public struct FeatureUpvoteView<
     Collection: RandomAccessCollection,
@@ -69,25 +73,23 @@ public struct FeatureUpvoteView<
 
     private var cellBgColor: Color {
         #if os(macOS)
-            Color.controlBackgroundColor
+            Color(NSColor.controlBackgroundColor)
         #else
-            Color.secondarySystemGroupedBackground
+            Color(UIColor.secondarySystemGroupedBackground)
         #endif
     }
 
     private var listBgColor: Color {
         #if os(macOS)
-            Color.windowBackgroundColor
+            Color(NSColor.windowBackgroundColor)
         #else
-            Color.systemGroupedBackground
+            Color(UIColor.systemGroupedBackground)
         #endif
     }
 }
 
 public extension FeatureUpvoteView {
-    struct Config {
-//        var tagColorMap: [String: Color] = [:]
-    }
+    struct Config {}
 }
 
 public struct FeatureUpvoteView_Previews: PreviewProvider {
