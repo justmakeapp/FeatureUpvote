@@ -12,6 +12,11 @@ import Foundation
 public enum L10n {
     /// Vote on Features
     public static let voteOnFeatures = L10n.tr("Localizable", "voteOnFeatures", fallback: "Vote on Features")
+    public enum Action {
+        /// Later
+        public static let later = L10n.tr("Localizable", "action.later", fallback: "Later")
+    }
+
     public enum Feature {
         /// Feature Description
         public static let desc = L10n.tr("Localizable", "feature.desc", fallback: "Feature Description")
@@ -19,6 +24,18 @@ public enum L10n {
         public static let name = L10n.tr("Localizable", "feature.name", fallback: "Feature Name")
         /// New Feature
         public static let new = L10n.tr("Localizable", "feature.new", fallback: "New Feature")
+    }
+
+    public enum FeatureVoting {
+        /// Share your desired new features and areas for improvement. Vote for your favorite features to enhance this
+        /// application.
+        public static let subtitle = L10n.tr(
+            "Localizable",
+            "featureVoting.subtitle",
+            fallback: "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application."
+        )
+        /// Feature Voting
+        public static let title = L10n.tr("Localizable", "featureVoting.title", fallback: "Feature Voting")
     }
 
     public enum Tag {
