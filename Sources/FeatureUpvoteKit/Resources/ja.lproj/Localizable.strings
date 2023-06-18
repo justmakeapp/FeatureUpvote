@@ -1,0 +1,10 @@
+"voteOnFeatures" = "Vote on Features";
+
+"tag.open" = "Open";
+"tag.inProgress" = "In Progress";
+"tag.done" = "Done";
+"tag.closed" = "Closed";
+
+"feature.new" = "New Feature";
+"feature.name" = "Feature Name";
+"feature.desc" = "Feature Description";

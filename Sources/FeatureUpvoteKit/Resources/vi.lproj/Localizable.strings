@@ -1,0 +1,10 @@
+"voteOnFeatures" = "Bình chọn Tính năng";
+
+"tag.open" = "Mở";
+"tag.inProgress" = "Đang xử lý";
+"tag.done" = "Hoàn thành";
+"tag.closed" = "Đóng";
+
+"feature.new" = "Tính Năng Mới";
+"feature.name" = "Tên tính năng";
+"feature.desc" = "Mô tả Tính năng";
