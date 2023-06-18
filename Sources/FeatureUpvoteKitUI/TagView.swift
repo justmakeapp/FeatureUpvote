@@ -39,6 +39,7 @@ public struct TagView: View {
             }
             .padding(.vertical, 2)
             .padding(.horizontal)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .background {
