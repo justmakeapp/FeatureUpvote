@@ -1,4 +1,8 @@
 "voteOnFeatures" = "Vote on Features";
+"featureVoting.title" = "Feature Voting";
+"featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
+
+"action.later" = "Later";
 
 "tag.open" = "Open";
 "tag.inProgress" = "In Progress";

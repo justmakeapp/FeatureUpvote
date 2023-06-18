@@ -1,10 +1,14 @@
-"voteOnFeatures" = "Vote on Features";
+"voteOnFeatures" = "次の新機能に投票する";
+"featureVoting.title" = "Feature Voting";
+"featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
 
-"tag.open" = "Open";
-"tag.inProgress" = "In Progress";
-"tag.done" = "Done";
-"tag.closed" = "Closed";
+"action.later" = "後で";
 
-"feature.new" = "New Feature";
-"feature.name" = "Feature Name";
-"feature.desc" = "Feature Description";
+"tag.open" = "開ける";
+"tag.inProgress" = "進行中";
+"tag.done" = "完了";
+"tag.closed" = "閉じ";
+
+"feature.new" = "新機能";
+"feature.name" = "機能名";
+"feature.desc" = "機能の説明";

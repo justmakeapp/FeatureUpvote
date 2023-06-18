@@ -1,4 +1,8 @@
 "voteOnFeatures" = "Bình chọn Tính năng";
+"featureVoting.title" = "Bầu Chọn Tính Năng";
+"featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
+
+"action.later" = "Để sau";
 
 "tag.open" = "Mở";
 "tag.inProgress" = "Đang xử lý";
