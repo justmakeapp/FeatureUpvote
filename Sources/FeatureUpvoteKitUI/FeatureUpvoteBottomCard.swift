@@ -46,8 +46,8 @@ public struct FeatureUpvoteBottomCard: View {
                     Text(L10n.voteOnFeatures)
                         .foregroundColor(.white)
                 }
-                .frame(height: 44.scaledToMacCatalyst())
-                .frame(maxWidth: 350.scaledToMacCatalyst())
+                .frame(height: 44.scaledToMac())
+                .frame(maxWidth: 350.scaledToMac())
                 .background(Color.accentColor)
                 .cornerRadius(config.cornerRadius)
             }
@@ -63,7 +63,7 @@ public struct FeatureUpvoteBottomCard: View {
 
 public extension FeatureUpvoteBottomCard {
     struct Config {
-        var cornerRadius = CGFloat(10).scaledToMacCatalyst()
+        var cornerRadius = CGFloat(10).scaledToMac()
     }
 
     func cornerRadius(_ value: CGFloat) -> Self {

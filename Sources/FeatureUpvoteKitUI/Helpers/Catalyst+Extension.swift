@@ -8,8 +8,8 @@
 import Foundation
 
 extension CGFloat {
-    func scaledToMacCatalyst() -> CGFloat {
-        #if targetEnvironment(macCatalyst)
+    func scaledToMac() -> CGFloat {
+        #if targetEnvironment(macCatalyst) || os(macOS)
             return ceil(self * 0.765)
         #else
             return self
@@ -18,8 +18,8 @@ extension CGFloat {
 }
 
 extension Int {
-    func scaledToMacCatalyst() -> Int {
-        #if targetEnvironment(macCatalyst)
+    func scaledToMac() -> Int {
+        #if targetEnvironment(macCatalyst) || os(macOS)
             return Int(ceil(Double(self) * 0.765))
         #else
             return self
@@ -28,8 +28,8 @@ extension Int {
 }
 
 extension Double {
-    func scaledToMacCatalyst() -> Double {
-        #if targetEnvironment(macCatalyst)
+    func scaledToMac() -> Double {
+        #if targetEnvironment(macCatalyst) || os(macOS)
             return ceil(self * 0.765)
         #else
             return self
