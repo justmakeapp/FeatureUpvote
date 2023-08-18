@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  VoteButton.swift
 //
 //
 //  Created by Long Vu on 17/06/2023.
