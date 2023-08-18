@@ -1,6 +1,6 @@
 "voteOnFeatures" = "次の新機能に投票する";
-"featureVoting.title" = "Feature Voting";
-"featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
+"featureVoting.title" = "フィーチャー投票";
+"featureVoting.subtitle" = "希望する新機能や改善点を共有します。 このアプリケーションを強化するために、お気に入りの機能に投票してください。";
 
 "action.later" = "後で";
 

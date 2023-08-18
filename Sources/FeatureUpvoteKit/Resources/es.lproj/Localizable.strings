@@ -1,0 +1,14 @@
+"voteOnFeatures" = "Vota por las características";
+"featureVoting.title" = "Votación de características";
+"featureVoting.subtitle" = "Comparta las nuevas funciones que desea y las áreas de mejora. Vota por tus características favoritas para mejorar esta aplicación.";
+
+"action.later" = "Más tarde";
+
+"tag.open" = "Abierto";
+"tag.inProgress" = "En curso";
+"tag.done" = "Hecho";
+"tag.closed" = "Cerrado";
+
+"feature.new" = "Nueva Característica";
+"feature.name" = "Nombre de la Característica";
+"feature.desc" = "Característica Descripción";
