@@ -44,13 +44,9 @@ public struct FeatureUpvoteView<
             headerBuilder()
 
             ForEach(data, id: \.self) { element in
-                if #available(macOS 13.0, iOS 16.0, *) {
-                    makeCell(element)
-                        .listRowSeparator(.hidden)
-                } else {
-                    makeCell(element)
-                }
+				makeCell(element)
             }
+            .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
             .listRowInsets(.init(top: 8, leading: 16, bottom: 8, trailing: 16))
         }

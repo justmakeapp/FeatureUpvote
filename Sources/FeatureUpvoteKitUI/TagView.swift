@@ -37,7 +37,7 @@ public struct TagView: View {
                     .font(.caption)
                     .foregroundColor(isSelected ? .white : .accentColor)
             }
-            .padding(.vertical, 2)
+            .padding(.vertical, 4)
             .padding(.horizontal)
             .contentShape(Rectangle())
         }
