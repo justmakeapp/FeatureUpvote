@@ -44,7 +44,7 @@ public struct FeatureUpvoteView<
             headerBuilder()
 
             ForEach(data, id: \.self) { element in
-				makeCell(element)
+                makeCell(element)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
@@ -89,68 +89,68 @@ public extension FeatureUpvoteView {
     struct Config {}
 }
 
-public struct FeatureUpvoteView_Previews: PreviewProvider {
-    public static let data: [Feature] = [
-        Feature(
-            id: "1",
-            name: "Asana integration",
-            description: "Please make an integration with Asana.",
-            tag: "Open",
-            voteCount: 0
-        ),
-        Feature(
-            id: "2",
-            name: "Matching game",
-            description: "Get faster at matching terms",
-            tag: "Open",
-            voteCount: 0
-        ),
-        Feature(
-            id: "3",
-            name: "Dictionary Suggestion",
-            description: "Add dictionary suggestions when writing vocabulary",
-            tag: "In Progress",
-            voteCount: 1
-        ),
-    ]
-
-    public static let tagColorMap = [
-        "Open": Color.accentColor,
-        "In Progress": Color.orange,
-        "Done": Color.purple,
-        "Closed": Color.gray,
-    ]
-
-    @State static var tags: Set<String> = []
-    static var allTags: [String] {
-        return Array(Set(data.map(\.tag)))
-    }
-
-    private static var filterdData: [Feature] {
-        if tags.isEmpty {
-            return data
-        } else {
-            return data.filter { tags.contains($0.tag) }
-        }
-    }
-
-    public static var previews: some View {
-        NavigationView {
-            FeatureUpvoteView(data: filterdData) { feature in
-                FeatureCellView(
-                    title: feature.name,
-                    description: feature.description,
-                    tag: feature.tag
-                ) {
-                    VoteButton(voteCount: feature.voteCount, hasVoted: false)
-                }
-                .tagColorMap(tagColorMap)
-            } headerBuilder: {
-                TagFilterView(tags: allTags, selectedTags: $tags)
-                    .tagColorMap(tagColorMap)
-            }
-            .searchable(text: .constant(""))
-            .navigationTitle(Text("Features"))
-        }
-    }
-}
+// public struct FeatureUpvoteView_Previews: PreviewProvider {
+//    public static let data: [Feature] = [
+//        Feature(
+//            id: "1",
+//            name: "Asana integration",
+//            description: "Please make an integration with Asana.",
+//            tag: "Open",
+//            voteCount: 0
+//        ),
+//        Feature(
+//            id: "2",
+//            name: "Matching game",
+//            description: "Get faster at matching terms",
+//            tag: "Open",
+//            voteCount: 0
+//        ),
+//        Feature(
+//            id: "3",
+//            name: "Dictionary Suggestion",
+//            description: "Add dictionary suggestions when writing vocabulary",
+//            tag: "In Progress",
+//            voteCount: 1
+//        ),
+//    ]
+//
+//    public static let tagColorMap = [
+//        "Open": Color.accentColor,
+//        "In Progress": Color.orange,
+//        "Done": Color.purple,
+//        "Closed": Color.gray,
+//    ]
+//
+//    @State static var tags: Set<String> = []
+//    static var allTags: [String] {
+//        return Array(Set(data.map(\.tag)))
+//    }
+//
+//    private static var filterdData: [Feature] {
+//        if tags.isEmpty {
+//            return data
+//        } else {
+//            return data.filter { tags.contains($0.tag) }
+//        }
+//    }
+//
+//    public static var previews: some View {
+//        NavigationView {
+//            FeatureUpvoteView(data: filterdData) { feature in
+//                FeatureCellView(
+//                    title: feature.name,
+//                    description: feature.description,
+//                    tag: feature.tag
+//                ) {
+//                    VoteButton(voteCount: feature.voteCount, hasVoted: false)
+//                }
+//                .tagColorMap(tagColorMap)
+//            } headerBuilder: {
+//                TagFilterView(tags: allTags, selectedTags: $tags)
+//                    .tagColorMap(tagColorMap)
+//            }
+//            .searchable(text: .constant(""))
+//            .navigationTitle(Text("Features"))
+//        }
+//    }
+// }

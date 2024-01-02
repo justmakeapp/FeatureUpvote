@@ -13,12 +13,24 @@ public struct Feature: Hashable, Decodable {
     public let description: String
     public let tag: String
     public let voteCount: UInt
+    public let createdAt: Date
+    public let updatedAt: Date
 
-    public init(id: String, name: String, description: String, tag: String, voteCount: UInt) {
+    public init(
+        id: String,
+        name: String,
+        description: String,
+        tag: String,
+        voteCount: UInt,
+        createdAt: Date,
+        updatedAt: Date
+    ) {
         self.id = id
         self.name = name
         self.description = description
         self.tag = tag
         self.voteCount = voteCount
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }
