@@ -38,6 +38,13 @@ public enum L10n {
         public static let title = L10n.tr("Localizable", "featureVoting.title", fallback: "Feature Voting")
     }
 
+    public enum SortOrder {
+        /// Ascending
+        public static let ascending = L10n.tr("Localizable", "sortOrder.ascending", fallback: "Ascending")
+        /// Descending
+        public static let descending = L10n.tr("Localizable", "sortOrder.descending", fallback: "Descending")
+    }
+
     public enum Tag {
         /// Closed
         public static let closed = L10n.tr("Localizable", "tag.closed", fallback: "Closed")

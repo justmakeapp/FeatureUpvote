@@ -12,3 +12,6 @@
 "feature.new" = "Nueva Característica";
 "feature.name" = "Nombre de la Característica";
 "feature.desc" = "Característica Descripción";
+
+"sortOrder.ascending" = "Ascendente";
+"sortOrder.descending" = "Descendente";

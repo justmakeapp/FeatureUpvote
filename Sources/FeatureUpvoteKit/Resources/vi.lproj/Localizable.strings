@@ -12,3 +12,6 @@
 "feature.new" = "Tính Năng Mới";
 "feature.name" = "Tên tính năng";
 "feature.desc" = "Mô tả Tính năng";
+
+"sortOrder.ascending" = "Tăng dần";
+"sortOrder.descending" = "Giảm dần";

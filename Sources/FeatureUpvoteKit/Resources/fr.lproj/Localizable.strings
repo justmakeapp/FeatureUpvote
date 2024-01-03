@@ -12,3 +12,6 @@
 "feature.new" = "Nouvelle fonctionnalité";
 "feature.name" = "Nom de la fonctionnalité";
 "feature.desc" = "Description de la fonctionnalité";
+
+"sortOrder.ascending" = "Ascendant";
+"sortOrder.descending" = "Descendant";

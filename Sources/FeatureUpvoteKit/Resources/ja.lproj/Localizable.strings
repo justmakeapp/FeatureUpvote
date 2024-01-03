@@ -12,3 +12,6 @@
 "feature.new" = "新機能";
 "feature.name" = "機能名";
 "feature.desc" = "機能の説明";
+
+"sortOrder.ascending" = "昇順";
+"sortOrder.descending" = "降順";
