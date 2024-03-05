@@ -22,8 +22,8 @@ public struct Feature: Hashable, Decodable {
         description: String,
         tag: String,
         voteCount: UInt,
-        createdAt: Date,
-        updatedAt: Date
+        createdAt: Date = .init(),
+        updatedAt: Date = .init()
     ) {
         self.id = id
         self.name = name
