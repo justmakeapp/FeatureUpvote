@@ -10,11 +10,22 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+    /// Empty
+    public static let empty = L10n.tr("Localizable", "empty", fallback: "Empty")
     /// Vote on Features
     public static let voteOnFeatures = L10n.tr("Localizable", "voteOnFeatures", fallback: "Vote on Features")
     public enum Action {
+        /// Cancel
+        public static let cancel = L10n.tr("Localizable", "action.cancel", fallback: "Cancel")
+        /// Create
+        public static let create = L10n.tr("Localizable", "action.create", fallback: "Create")
         /// Later
         public static let later = L10n.tr("Localizable", "action.later", fallback: "Later")
+    }
+
+    public enum Error {
+        /// Error
+        public static let title = L10n.tr("Localizable", "error.title", fallback: "Error")
     }
 
     public enum Feature {
@@ -43,6 +54,19 @@ public enum L10n {
         public static let ascending = L10n.tr("Localizable", "sortOrder.ascending", fallback: "Ascending")
         /// Descending
         public static let descending = L10n.tr("Localizable", "sortOrder.descending", fallback: "Descending")
+    }
+
+    public enum Sorting {
+        /// Alphabetical
+        public static let alphabetical = L10n.tr("Localizable", "sorting.alphabetical", fallback: "Alphabetical")
+        /// Comming Soon
+        public static let commingSoon = L10n.tr("Localizable", "sorting.commingSoon", fallback: "Comming Soon")
+        /// Created Date
+        public static let createdDate = L10n.tr("Localizable", "sorting.createdDate", fallback: "Created Date")
+        /// Sort by
+        public static let sortBy = L10n.tr("Localizable", "sorting.sortBy", fallback: "Sort by")
+        /// Updated Date
+        public static let updatedDate = L10n.tr("Localizable", "sorting.updatedDate", fallback: "Updated Date")
     }
 
     public enum Tag {

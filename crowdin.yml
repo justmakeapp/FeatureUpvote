@@ -5,6 +5,6 @@ base_url: https://api.crowdin.com
 preserve_hierarchy: true
 
 files:
-  - source: /Sources/FeatureUpvoteKit/Resources/en.lproj/*.strings
+  - source: /Sources/FeatureUpvoteL10n/Resources/en.lproj/*.strings
     dest: /%original_file_name%
-    translation: /Sources/FeatureUpvoteKit/Resources/%osx_code%/%original_file_name%
+    translation: /Sources/FeatureUpvoteL10n/Resources/%osx_code%/%original_file_name%

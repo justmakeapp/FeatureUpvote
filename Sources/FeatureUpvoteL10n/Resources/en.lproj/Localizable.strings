@@ -2,7 +2,13 @@
 "featureVoting.title" = "Feature Voting";
 "featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
 
+"empty" = "Empty";
+
 "action.later" = "Later";
+"action.create" = "Create";
+"action.cancel" = "Cancel";
+
+"error.title" = "Error";
 
 "tag.open" = "Open";
 "tag.inProgress" = "In Progress";
@@ -15,3 +21,9 @@
 
 "sortOrder.ascending" = "Ascending";
 "sortOrder.descending" = "Descending";
+
+"sorting.sortBy" = "Sort by";
+"sorting.alphabetical" = "Alphabetical";
+"sorting.createdDate" = "Created Date";
+"sorting.updatedDate" = "Updated Date";
+"sorting.commingSoon" = "Comming Soon";

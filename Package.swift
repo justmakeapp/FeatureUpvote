@@ -12,6 +12,10 @@ let package = Package(
             targets: ["FeatureUpvoteKit"]
         ),
         .library(
+            name: "FeatureUpvoteL10n",
+            targets: ["FeatureUpvoteL10n"]
+        ),
+        .library(
             name: "FeatureUpvoteKitUI",
             targets: ["FeatureUpvoteKitUI"]
         ),
@@ -21,9 +25,13 @@ let package = Package(
             name: "FeatureUpvoteKit"
         ),
         .target(
+            name: "FeatureUpvoteL10n"
+        ),
+        .target(
             name: "FeatureUpvoteKitUI",
             dependencies: [
                 "FeatureUpvoteKit",
+                "FeatureUpvoteL10n"
             ]
         ),
     ]

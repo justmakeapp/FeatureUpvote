@@ -5,6 +5,7 @@
 //
 
 import FeatureUpvoteKit
+import FeatureUpvoteL10n
 import SwiftUI
 
 public struct FeatureUpvoteBottomCard: View {
