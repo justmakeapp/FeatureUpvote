@@ -24,6 +24,18 @@ public enum L10n {
     }
 
     public enum Error {
+        /// Feature description should more than 10 characters
+        public static let featureDescShoudMoreThan10Characters = L10n.tr(
+            "Localizable",
+            "error.featureDescShoudMoreThan10Characters",
+            fallback: "Feature description should more than 10 characters"
+        )
+        /// Feature name should more than 10 characters
+        public static let featureNameShoudMoreThan10Characters = L10n.tr(
+            "Localizable",
+            "error.featureNameShoudMoreThan10Characters",
+            fallback: "Feature name should more than 10 characters"
+        )
         /// Error
         public static let title = L10n.tr("Localizable", "error.title", fallback: "Error")
     }

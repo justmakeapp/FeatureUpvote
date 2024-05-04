@@ -9,6 +9,8 @@
 "action.cancel" = "Cancel";
 
 "error.title" = "Error";
+"error.featureNameShoudMoreThan10Characters" = "Feature name should more than 10 characters";
+"error.featureDescShoudMoreThan10Characters" = "Feature description should more than 10 characters";
 
 "tag.open" = "Open";
 "tag.inProgress" = "In Progress";
