@@ -24,18 +24,26 @@ public enum L10n {
     }
 
     public enum Error {
-        /// Feature description should more than 10 characters
-        public static let featureDescShoudMoreThan10Characters = L10n.tr(
-            "Localizable",
-            "error.featureDescShoudMoreThan10Characters",
-            fallback: "Feature description should more than 10 characters"
-        )
-        /// Feature name should more than 10 characters
-        public static let featureNameShoudMoreThan10Characters = L10n.tr(
-            "Localizable",
-            "error.featureNameShoudMoreThan10Characters",
-            fallback: "Feature name should more than 10 characters"
-        )
+        /// Feature description should more than %d characters
+        public static func featureDescShoudMoreThanXCharacters(_ p1: Int) -> String {
+            return L10n.tr(
+                "Localizable",
+                "error.featureDescShoudMoreThanXCharacters",
+                p1,
+                fallback: "Feature description should more than %d characters"
+            )
+        }
+
+        /// Feature name should more than %d characters
+        public static func featureNameShoudMoreThanXCharacters(_ p1: Int) -> String {
+            return L10n.tr(
+                "Localizable",
+                "error.featureNameShoudMoreThanXCharacters",
+                p1,
+                fallback: "Feature name should more than %d characters"
+            )
+        }
+
         /// Error
         public static let title = L10n.tr("Localizable", "error.title", fallback: "Error")
     }
