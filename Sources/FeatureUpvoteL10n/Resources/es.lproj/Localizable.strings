@@ -2,7 +2,15 @@
 "featureVoting.title" = "Votación de características";
 "featureVoting.subtitle" = "Comparta las nuevas funciones que desea y las áreas de mejora. Vota por tus características favoritas para mejorar esta aplicación.";
 
+"empty" = "Vacío";
+
 "action.later" = "Más tarde";
+"action.create" = "Crear";
+"action.cancel" = "Cancelar";
+
+"error.title" = "Error";
+"error.featureNameShoudMoreThanXCharacters" = "El nombre de la característica debe tener más de %d caracteres";
+"error.featureDescShoudMoreThanXCharacters" = "La descripción de la característica debe tener más de %d caracteres";
 
 "tag.open" = "Abierto";
 "tag.inProgress" = "En curso";
@@ -15,3 +23,9 @@
 
 "sortOrder.ascending" = "Ascendente";
 "sortOrder.descending" = "Descendente";
+
+"sorting.sortBy" = "Ordenar por";
+"sorting.alphabetical" = "Alfabético";
+"sorting.createdDate" = "Fecha de Creación";
+"sorting.updatedDate" = "Fecha de Modificación";
+"sorting.commingSoon" = "Próximamente";

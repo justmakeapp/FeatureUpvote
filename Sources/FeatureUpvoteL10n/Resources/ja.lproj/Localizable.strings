@@ -2,7 +2,15 @@
 "featureVoting.title" = "フィーチャー投票";
 "featureVoting.subtitle" = "希望する新機能や改善点を共有します。 このアプリケーションを強化するために、お気に入りの機能に投票してください。";
 
+"empty" = "空の";
+
 "action.later" = "後で";
+"action.create" = "作成する";
+"action.cancel" = "キャンセル";
+
+"error.title" = "エラー";
+"error.featureNameShoudMoreThanXCharacters" = "機能名は%d文字以上である必要があります";
+"error.featureDescShoudMoreThanXCharacters" = "機能説明は%d文字以上である必要があります";
 
 "tag.open" = "開ける";
 "tag.inProgress" = "進行中";
@@ -15,3 +23,9 @@
 
 "sortOrder.ascending" = "昇順";
 "sortOrder.descending" = "降順";
+
+"sorting.sortBy" = "並び順";
+"sorting.alphabetical" = "アルファベット順";
+"sorting.createdDate" = "作成日";
+"sorting.updatedDate" = "更新日";
+"sorting.commingSoon" = "近日公開";

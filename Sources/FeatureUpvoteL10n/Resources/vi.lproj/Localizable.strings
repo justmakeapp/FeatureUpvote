@@ -2,7 +2,15 @@
 "featureVoting.title" = "Bầu Chọn Tính Năng";
 "featureVoting.subtitle" = "Chia sẻ các tính năng và lĩnh vực mới mong muốn của bạn để cải thiện. Bình chọn cho các tính năng yêu thích của bạn để nâng cao ứng dụng này.";
 
+"empty" = "Trống";
+
 "action.later" = "Để sau";
+"action.create" = "Tạo mới";
+"action.cancel" = "Hủy bỏ";
+
+"error.title" = "Lỗi";
+"error.featureNameShoudMoreThanXCharacters" = "Tên tính năng phải có nhiều hơn %d ký tự";
+"error.featureDescShoudMoreThanXCharacters" = "Mô tả tính năng phải có nhiều hơn %d ký tự";
 
 "tag.open" = "Mở";
 "tag.inProgress" = "Đang xử lý";
@@ -15,3 +23,9 @@
 
 "sortOrder.ascending" = "Tăng dần";
 "sortOrder.descending" = "Giảm dần";
+
+"sorting.sortBy" = "Sắp xếp theo";
+"sorting.alphabetical" = "Thứ tự chữ cái";
+"sorting.createdDate" = "Ngày tạo";
+"sorting.updatedDate" = "Ngày cập nhật";
+"sorting.commingSoon" = "Sắp ra mắt";

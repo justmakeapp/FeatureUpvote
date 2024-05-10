@@ -1,0 +1,31 @@
+"voteOnFeatures" = "Über Funktionen abstimmen";
+"featureVoting.title" = "Funktionsabstimmung";
+"featureVoting.subtitle" = "Teilen Sie Ihre gewünschten neuen Funktionen und Verbesserungsbereiche. Stimmen Sie für Ihre Lieblingsfunktionen ab, um diese Anwendung zu verbessern.";
+
+"empty" = "Leer";
+
+"action.later" = "Später";
+"action.create" = "Erstellen";
+"action.cancel" = "Abbrechen";
+
+"error.title" = "Fehler";
+"error.featureNameShoudMoreThanXCharacters" = "Der Name des Features sollte mehr als %d Zeichen haben";
+"error.featureDescShoudMoreThanXCharacters" = "Die Beschreibung des Features sollte mehr als %d Zeichen haben";
+
+"tag.open" = "Offen";
+"tag.inProgress" = "In Bearbeitung";
+"tag.done" = "Erledigt";
+"tag.closed" = "Geschlossen";
+
+"feature.new" = "Neues Feature";
+"feature.name" = "Funktionsname";
+"feature.desc" = "Funktionsbeschreibung";
+
+"sortOrder.ascending" = "Aufsteigend";
+"sortOrder.descending" = "Absteigend";
+
+"sorting.sortBy" = "Sortieren nach";
+"sorting.alphabetical" = "Alphabetisch";
+"sorting.createdDate" = "Erstellungsdatum";
+"sorting.updatedDate" = "Aktualisiertes Datum";
+"sorting.commingSoon" = "Demnächst";
