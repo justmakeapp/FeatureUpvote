@@ -1,14 +1,28 @@
-"voteOnFeatures" = "Vote on Features";
-"featureVoting.title" = "Feature Voting";
-"featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
+"voteOnFeatures" = "기능 투표";
+"featureVoting.title" = "기능 투표";
+"featureVoting.subtitle" = "원하는 새로운 기능과 개선할 영역을 공유하세요. 좋아하는 기능에 투표하여 이 애플리케이션을 향상시키세요.";
 
-"action.later" = "Later";
+"action.later" = "나중에";
 
-"tag.open" = "Open";
-"tag.inProgress" = "In Progress";
-"tag.done" = "Done";
-"tag.closed" = "Closed";
+"tag.open" = "열림";
+"tag.inProgress" = "진행 중";
+"tag.done" = "완료됨";
+"tag.closed" = "닫힘";
 
-"feature.new" = "New Feature";
-"feature.name" = "Feature Name";
-"feature.desc" = "Feature Description";
+"feature.new" = "새 기능";
+"feature.name" = "기능 이름";
+"feature.desc" = "기능 설명";
+
+"empty" = "비어 있음";
+"action.create" = "생성";
+"action.cancel" = "취소";
+"error.title" = "오류";
+"error.featureNameShoudMoreThanXCharacters" = "기능 이름은 %d자 이상이어야 합니다";
+"error.featureDescShoudMoreThanXCharacters" = "기능 설명은 %d자 이상이어야 합니다";
+"sortOrder.ascending" = "오름차순";
+"sortOrder.descending" = "내림차순";
+"sorting.sortBy" = "정렬 기준";
+"sorting.alphabetical" = "알파벳 순";
+"sorting.createdDate" = "생성 날짜";
+"sorting.updatedDate" = "업데이트 날짜";
+"sorting.commingSoon" = "곧 제공 예정";
