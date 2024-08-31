@@ -8,7 +8,7 @@
 import FeatureUpvoteKit
 import SwiftUI
 #if canImport(Translation)
-import Translation
+    import Translation
 #endif
 
 #if canImport(Translation) && (os(macOS) || os(iOS))

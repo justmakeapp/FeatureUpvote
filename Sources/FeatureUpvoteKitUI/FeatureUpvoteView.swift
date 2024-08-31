@@ -13,7 +13,7 @@ import SwiftUI
     import UIKit.UIColor
 #endif
 #if canImport(Translation)
-import Translation
+    import Translation
 #endif
 
 public struct FeatureUpvoteView<
