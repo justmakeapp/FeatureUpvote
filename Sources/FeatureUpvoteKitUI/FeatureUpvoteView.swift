@@ -12,21 +12,30 @@ import SwiftUI
 #else
     import UIKit.UIColor
 #endif
+#if canImport(Translation)
+import Translation
+#endif
 
 public struct FeatureUpvoteView<
     Collection: RandomAccessCollection,
     CellView: View,
     HeaderView: View
->: View where Collection.Element: Hashable {
+>: View where Collection.Element: Hashable & Identifiable & TranslatableFeature {
     private var data: Collection
-    private var cellBuilder: (Collection.Element) -> CellView
+    private var cellBuilder: (
+        Collection.Element,
+        _ translations: [FeatureTranslation.Response]
+    ) -> CellView
     private var headerBuilder: () -> HeaderView
 
     private var config = Config()
 
+    @State private var translations: [AnyHashable: [FeatureTranslation.Response]] = [:]
+
     public init(
         data: Collection,
-        @ViewBuilder cellBuilder: @escaping (Collection.Element) -> CellView,
+        @ViewBuilder cellBuilder: @escaping (Collection.Element, _ translations: [FeatureTranslation.Response])
+            -> CellView,
         @ViewBuilder headerBuilder: @escaping () -> HeaderView
     ) {
         self.data = data
@@ -40,10 +49,10 @@ public struct FeatureUpvoteView<
 
     @ViewBuilder
     private var contentView: some View {
-        let list = List {
+        List {
             headerBuilder()
 
-            ForEach(data, id: \.self) { element in
+            ForEach(data) { element in
                 makeCell(element)
             }
             .listRowSeparator(.hidden)
@@ -52,17 +61,48 @@ public struct FeatureUpvoteView<
         }
         .listStyle(.plain)
         .background(listBgColor)
-
-        if #available(macOS 13.0, iOS 16.0, *) {
-            list
-                .scrollContentBackground(.hidden)
-        } else {
-            list
+        .scrollContentBackground(.hidden)
+        .modifier {
+            if #available(iOS 18.0, macOS 15.0, *) {
+                #if canImport(Translation) && (os(macOS) || os(iOS))
+                    $0
+                        .safeAreaInset(edge: .bottom) {
+                            bottomSafeAreaView
+                        }
+                #else
+                    $0
+                #endif
+            } else {
+                $0
+            }
         }
     }
 
+    #if canImport(Translation) && (os(macOS) || os(iOS))
+        @available(iOS 18.0, macOS 15.0, *)
+        private var bottomSafeAreaView: some View {
+            TranslationView(data as! [any TranslatableFeature]) { responses in
+                for response in responses {
+                    guard
+                        let components = response.clientIdentifier?.components(separatedBy: "|"),
+                        let itemID = components.first,
+                        components.count > 1
+                    else {
+                        return
+                    }
+
+                    if translations[itemID] == nil {
+                        translations[itemID] = [response]
+                    } else {
+                        translations[itemID]?.append(response)
+                    }
+                }
+            }
+        }
+    #endif
+
     private func makeCell(_ element: Collection.Element) -> some View {
-        cellBuilder(element)
+        cellBuilder(element, translations[element.id, default: []])
             .padding()
             .background(cellBgColor)
             .cornerRadius(10)
@@ -89,68 +129,70 @@ public extension FeatureUpvoteView {
     struct Config {}
 }
 
-// public struct FeatureUpvoteView_Previews: PreviewProvider {
-//    public static let data: [Feature] = [
-//        Feature(
-//            id: "1",
-//            name: "Asana integration",
-//            description: "Please make an integration with Asana.",
-//            tag: "Open",
-//            voteCount: 0
-//        ),
-//        Feature(
-//            id: "2",
-//            name: "Matching game",
-//            description: "Get faster at matching terms",
-//            tag: "Open",
-//            voteCount: 0
-//        ),
-//        Feature(
-//            id: "3",
-//            name: "Dictionary Suggestion",
-//            description: "Add dictionary suggestions when writing vocabulary",
-//            tag: "In Progress",
-//            voteCount: 1
-//        ),
-//    ]
-//
-//    public static let tagColorMap = [
-//        "Open": Color.accentColor,
-//        "In Progress": Color.orange,
-//        "Done": Color.purple,
-//        "Closed": Color.gray,
-//    ]
-//
-//    @State static var tags: Set<String> = []
-//    static var allTags: [String] {
-//        return Array(Set(data.map(\.tag)))
-//    }
-//
-//    private static var filterdData: [Feature] {
-//        if tags.isEmpty {
-//            return data
-//        } else {
-//            return data.filter { tags.contains($0.tag) }
-//        }
-//    }
-//
-//    public static var previews: some View {
-//        NavigationView {
-//            FeatureUpvoteView(data: filterdData) { feature in
-//                FeatureCellView(
-//                    title: feature.name,
-//                    description: feature.description,
-//                    tag: feature.tag
-//                ) {
-//                    VoteButton(voteCount: feature.voteCount, hasVoted: false)
-//                }
-//                .tagColorMap(tagColorMap)
-//            } headerBuilder: {
-//                TagFilterView(tags: allTags, selectedTags: $tags)
-//                    .tagColorMap(tagColorMap)
-//            }
-//            .searchable(text: .constant(""))
-//            .navigationTitle(Text("Features"))
-//        }
-//    }
-// }
+// MARK: - Previews
+
+public struct FeatureUpvoteView_Previews: PreviewProvider {
+    public static let data: [Feature] = [
+        Feature(
+            id: "1",
+            name: "Asana integration",
+            description: "Please make an integration with Asana.",
+            tag: "Open",
+            voteCount: 0
+        ),
+        Feature(
+            id: "2",
+            name: "Matching game",
+            description: "Get faster at matching terms",
+            tag: "Open",
+            voteCount: 0
+        ),
+        Feature(
+            id: "3",
+            name: "Dictionary Suggestion",
+            description: "Add dictionary suggestions when writing vocabulary",
+            tag: "In Progress",
+            voteCount: 1
+        ),
+    ]
+
+    public static let tagColorMap = [
+        "Open": Color.accentColor,
+        "In Progress": Color.orange,
+        "Done": Color.purple,
+        "Closed": Color.gray,
+    ]
+
+    @State static var tags: Set<String> = []
+    static var allTags: [String] {
+        return Array(Set(data.map(\.tag)))
+    }
+
+    private static var filterdData: [Feature] {
+        if tags.isEmpty {
+            return data
+        } else {
+            return data.filter { tags.contains($0.tag) }
+        }
+    }
+
+    public static var previews: some View {
+        NavigationView {
+            FeatureUpvoteView(data: filterdData) { feature, translations in
+                FeatureCellView(
+                    title: feature.name,
+                    description: translations.first?.targetText ?? feature.description,
+                    tag: feature.tag
+                ) {
+                    VoteButton(voteCount: feature.voteCount, hasVoted: false)
+                }
+                .tagColorMap(tagColorMap)
+            } headerBuilder: {
+                TagFilterView(tags: allTags, selectedTags: $tags)
+                    .tagColorMap(tagColorMap)
+            }
+            .searchable(text: .constant(""))
+            .navigationTitle(Text("Features"))
+        }
+    }
+}
