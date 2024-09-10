@@ -62,12 +62,11 @@ public struct FeatureCellView: View {
         if let translatedTitle = config.translatedTitle, let translatedDesc = config.translatedDesc {
             VStack(alignment: .leading) {
                 Text(translatedTitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.body)
 
                 Text(translatedDesc)
-                    .font(.footnote)
-                    .fontWeight(.regular)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
             .padding(.vertical, 6)
             .padding(.horizontal)

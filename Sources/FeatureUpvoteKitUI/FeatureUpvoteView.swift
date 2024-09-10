@@ -49,55 +49,53 @@ public struct FeatureUpvoteView<
 
     @ViewBuilder
     private var contentView: some View {
-        List {
-            headerBuilder()
+        ZStack {
+            List {
+                headerBuilder()
 
-            ForEach(data) { element in
-                makeCell(element)
+                ForEach(data) { element in
+                    makeCell(element)
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+                .listRowInsets(.init(top: 8, leading: 16, bottom: 8, trailing: 16))
             }
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.clear)
-            .listRowInsets(.init(top: 8, leading: 16, bottom: 8, trailing: 16))
-        }
-        .listStyle(.plain)
-        .background(listBgColor)
-        .scrollContentBackground(.hidden)
-        .modifier {
+            .listStyle(.plain)
+            .background(listBgColor)
+            .scrollContentBackground(.hidden)
+
             if #available(iOS 18.0, macOS 15.0, *) {
                 #if canImport(Translation) && (os(macOS) || os(iOS))
-                    $0
-                        .safeAreaInset(edge: .bottom) {
-                            bottomSafeAreaView
-                        }
-                #else
-                    $0
+                    translateView
                 #endif
-            } else {
-                $0
             }
         }
     }
 
     #if canImport(Translation) && (os(macOS) || os(iOS))
         @available(iOS 18.0, macOS 15.0, *)
-        private var bottomSafeAreaView: some View {
-            TranslationView(data as! [any TranslatableFeature]) { responses in
-                for response in responses {
-                    guard
-                        let components = response.clientIdentifier?.components(separatedBy: "|"),
-                        let itemID = components.first,
-                        components.count > 1
-                    else {
-                        return
-                    }
+        private var translateView: some View {
+            ZStack(alignment: .bottomTrailing) {
+                TranslationView(data as! [any TranslatableFeature]) { responses in
+                    for response in responses {
+                        guard
+                            let components = response.clientIdentifier?.components(separatedBy: "|"),
+                            let itemID = components.first,
+                            components.count > 1
+                        else {
+                            return
+                        }
 
-                    if translations[itemID] == nil {
-                        translations[itemID] = [response]
-                    } else {
-                        translations[itemID]?.append(response)
+                        if translations[itemID] == nil {
+                            translations[itemID] = [response]
+                        } else {
+                            translations[itemID]?.append(response)
+                        }
                     }
                 }
             }
+            .padding(32)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
         }
     #endif
 
