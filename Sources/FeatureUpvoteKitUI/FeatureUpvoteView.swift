@@ -65,14 +65,14 @@ public struct FeatureUpvoteView<
             .scrollContentBackground(.hidden)
 
             if #available(iOS 18.0, macOS 15.0, *) {
-                #if canImport(Translation) && (os(macOS) || os(iOS))
+                #if canImport(Translation) && (os(macOS) || (os(iOS) && !targetEnvironment(macCatalyst)))
                     translateView
                 #endif
             }
         }
     }
 
-    #if canImport(Translation) && (os(macOS) || os(iOS))
+    #if canImport(Translation) && (os(macOS) || (os(iOS) && !targetEnvironment(macCatalyst)))
         @available(iOS 18.0, macOS 15.0, *)
         private var translateView: some View {
             ZStack(alignment: .bottomTrailing) {

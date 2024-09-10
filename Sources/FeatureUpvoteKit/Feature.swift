@@ -82,7 +82,7 @@ public enum FeatureTranslation {
     }
 }
 
-#if canImport(Translation) && (os(macOS) || os(iOS))
+#if canImport(Translation) && (os(macOS) || (os(iOS) && !targetEnvironment(macCatalyst)))
     public extension FeatureTranslation.Request {
         @available(iOS 18.0, macOS 15.0, *)
         func asRequest() -> TranslationSession.Request {
