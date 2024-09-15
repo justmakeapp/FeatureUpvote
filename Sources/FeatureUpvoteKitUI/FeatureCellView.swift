@@ -59,30 +59,32 @@ public struct FeatureCellView: View {
 
     @ViewBuilder
     private var translationView: some View {
-        if let translatedTitle = config.translatedTitle, let translatedDesc = config.translatedDesc {
-            VStack(alignment: .leading) {
-                Text(translatedTitle)
-                    .font(.body)
+        #if os(iOS)
+            if let translatedTitle = config.translatedTitle, let translatedDesc = config.translatedDesc {
+                VStack(alignment: .leading) {
+                    Text(translatedTitle)
+                        .font(.body)
 
-                Text(translatedDesc)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.vertical, 6)
-            .padding(.horizontal)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .modifier {
-                if #available(iOS 17.0, *) {
-                    $0
-                        .background(.background.secondary)
-                } else {
-                    $0
-                        .background(Color(uiColor: .secondarySystemBackground))
+                    Text(translatedDesc)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
-            }
+                .padding(.vertical, 6)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .modifier {
+                    if #available(iOS 17.0, *) {
+                        $0
+                            .background(.background.secondary)
+                    } else {
+                        $0
+                            .background(Color(uiColor: .secondarySystemBackground))
+                    }
+                }
 
-            .cornerRadius(8)
-        }
+                .cornerRadius(8)
+            }
+        #endif
     }
 }
 
