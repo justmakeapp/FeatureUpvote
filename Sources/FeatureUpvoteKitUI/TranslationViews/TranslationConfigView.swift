@@ -117,8 +117,7 @@ public struct TranslationConfigView: View {
                                     .tag(language)
                             }
                         }
-                        .frame(minWidth: 100, maxWidth: proxy.size.width / 2)
-                        .fixedSize(horizontal: true, vertical: false)
+                        .frame(minWidth: 100, maxWidth: max(100, proxy.size.width / 2))
                     }
 
                     HStack {
@@ -133,8 +132,7 @@ public struct TranslationConfigView: View {
                                     .tag(language)
                             }
                         }
-                        .frame(minWidth: 100, maxWidth: proxy.size.width / 2)
-                        .fixedSize(horizontal: true, vertical: false)
+                        .frame(minWidth: 100, maxWidth: max(100, proxy.size.width / 2))
                     }
                 }
 
