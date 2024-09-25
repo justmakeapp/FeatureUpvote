@@ -29,3 +29,5 @@
 "sorting.createdDate" = "Fecha de Creación";
 "sorting.updatedDate" = "Fecha de Modificación";
 "sorting.commingSoon" = "Próximamente";
+
+"action.translate" = "Traducir";

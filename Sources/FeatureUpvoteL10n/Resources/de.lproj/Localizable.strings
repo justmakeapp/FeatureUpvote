@@ -29,3 +29,5 @@
 "sorting.createdDate" = "Erstellungsdatum";
 "sorting.updatedDate" = "Aktualisiertes Datum";
 "sorting.commingSoon" = "Demnächst";
+
+"action.translate" = "Übersetzen";

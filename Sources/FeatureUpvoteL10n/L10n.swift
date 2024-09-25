@@ -21,6 +21,8 @@ public enum L10n {
         public static let create = L10n.tr("Localizable", "action.create", fallback: "Create")
         /// Later
         public static let later = L10n.tr("Localizable", "action.later", fallback: "Later")
+        /// Translate
+        public static let translate = L10n.tr("Localizable", "action.translate", fallback: "Translate")
     }
 
     public enum Error {

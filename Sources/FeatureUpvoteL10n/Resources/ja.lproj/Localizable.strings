@@ -29,3 +29,5 @@
 "sorting.createdDate" = "作成日";
 "sorting.updatedDate" = "更新日";
 "sorting.commingSoon" = "近日公開";
+
+"action.translate" = "翻訳";

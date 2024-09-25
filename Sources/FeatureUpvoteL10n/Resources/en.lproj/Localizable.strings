@@ -7,6 +7,7 @@
 "action.later" = "Later";
 "action.create" = "Create";
 "action.cancel" = "Cancel";
+"action.translate" = "Translate";
 
 "error.title" = "Error";
 "error.featureNameShoudMoreThanXCharacters" = "Feature name should more than %d characters";

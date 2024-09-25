@@ -9,6 +9,7 @@ import SwiftUI
 #if canImport(Translation)
     import Translation
 #endif
+import FeatureUpvoteL10n
 
 @available(iOS 18.0, macOS 15.0, *)
 public struct TranslationConfigView: View {
@@ -49,7 +50,7 @@ public struct TranslationConfigView: View {
     }
 
     public var body: some View {
-        contentView
+        containerView
             .task { @MainActor in
                 let supportedLanguagesTask = Task.detached {
                     return await LanguageAvailability().supportedLanguages
@@ -57,11 +58,14 @@ public struct TranslationConfigView: View {
 
                 let result = await supportedLanguagesTask.value
 
-                if
-                    sourceLanguage == nil,
-                    let sourceLanguageType,
-                    case let .languageCode(code) = sourceLanguageType {
-                    sourceLanguage = result.first(where: { $0.languageCode?.identifier == code })
+                if sourceLanguage == nil {
+                    if
+                        let sourceLanguageType,
+                        case let .languageCode(code) = sourceLanguageType {
+                        sourceLanguage = result.first(where: { $0.languageCode?.identifier == code })
+                    } else {
+                        sourceLanguage = result.first
+                    }
                 }
 
                 targetLanguage = result
@@ -71,64 +75,114 @@ public struct TranslationConfigView: View {
             }
     }
 
-    private var contentView: some View {
-        VStack(spacing: 24) {
-            VStack {
-                HStack {
-                    Label("Source Language", systemImage: "book.closed")
-
-                    Spacer()
-
-                    Picker("", selection: $sourceLanguage) {
-                        ForEach(availableLanguages, id: \.self) { language in
-                            Text(Locale.current
-                                .localizedString(forIdentifier: language.minimalIdentifier) ?? "")
-                                .tag(language)
+    @ViewBuilder
+    private var containerView: some View {
+        NavigationStack {
+            contentView
+                .toolbar {
+                    #if os(macOS)
+                        ToolbarItem(placement: .cancellationAction) {
+                            cancelButton
                         }
-                    }
-                    .frame(maxWidth: 150)
-                    .fixedSize(horizontal: true, vertical: false)
-                }
 
-                HStack {
-                    Label("Target Language", systemImage: "globe")
-
-                    Spacer()
-
-                    Picker("", selection: $targetLanguage) {
-                        ForEach(availableLanguages, id: \.self) { language in
-                            Text(Locale.current
-                                .localizedString(forIdentifier: language.minimalIdentifier) ?? "")
-                                .tag(language)
+                        ToolbarItem(placement: .confirmationAction) {
+                            translateButton
                         }
-                    }
-                    .frame(maxWidth: 150)
-                    .fixedSize(horizontal: true, vertical: false)
+                    #endif
+
+                    #if os(iOS)
+                        ToolbarItem(placement: .topBarTrailing) {
+                            cancelButton
+                        }
+                    #endif
                 }
-            }
-
-            Button {
-                self.configuration = TranslationSession.Configuration(
-                    source: sourceLanguage,
-                    target: targetLanguage
-                )
-
-                dismiss()
-            } label: {
-                HStack {
-                    Label("Translate", systemImage: "translate")
-                        .foregroundStyle(.white)
-                }
-                .frame(height: 44.scaledToMac())
-                .frame(maxWidth: 400)
-                .background(Color.accentColor)
-                .cornerRadius(8)
-            }
-            .buttonStyle(PressEffectButtonStyle())
-            .disabled(sourceLanguage == nil && targetLanguage == nil)
-
-            Spacer()
+                .presentationDetents([.height(260)])
         }
-        .padding()
+        .presentationDragIndicator(.visible)
+    }
+
+    private var contentView: some View {
+        GeometryReader { proxy in
+            VStack(spacing: 24) {
+                VStack {
+                    HStack {
+                        Label("Source Language", systemImage: "book.closed")
+
+                        Spacer()
+
+                        Picker("", selection: $sourceLanguage) {
+                            ForEach(availableLanguages, id: \.self) { language in
+                                Text(Locale.current
+                                    .localizedString(forIdentifier: language.minimalIdentifier) ?? "")
+                                    .tag(language)
+                            }
+                        }
+                        .frame(minWidth: 100, maxWidth: proxy.size.width / 2)
+                        .fixedSize(horizontal: true, vertical: false)
+                    }
+
+                    HStack {
+                        Label("Target Language", systemImage: "globe")
+
+                        Spacer()
+
+                        Picker("", selection: $targetLanguage) {
+                            ForEach(availableLanguages, id: \.self) { language in
+                                Text(Locale.current
+                                    .localizedString(forIdentifier: language.minimalIdentifier) ?? "")
+                                    .tag(language)
+                            }
+                        }
+                        .frame(minWidth: 100, maxWidth: proxy.size.width / 2)
+                        .fixedSize(horizontal: true, vertical: false)
+                    }
+                }
+
+                #if os(iOS)
+                    translateButton
+                #endif
+
+                Spacer()
+            }
+            .padding()
+        }
+        #if os(macOS)
+        .frame(minHeight: 160)
+        #endif
+    }
+
+    private var translateButton: some View {
+        Button {
+            self.configuration = TranslationSession.Configuration(
+                source: sourceLanguage,
+                target: targetLanguage
+            )
+
+            dismiss()
+        } label: {
+            HStack {
+                Label(FeatureUpvoteL10n.L10n.Action.translate, systemImage: "translate")
+                    .foregroundStyle(.white)
+            }
+            #if os(iOS)
+            .frame(height: 44.scaledToMac())
+            .frame(maxWidth: 400)
+            .background(Color.accentColor)
+            .cornerRadius(8)
+            #endif
+        }
+        #if os(iOS)
+        .buttonStyle(PressEffectButtonStyle())
+        #endif
+        #if os(macOS)
+        .buttonStyle(.borderedProminent)
+        #endif
+        .disabled(sourceLanguage == nil && targetLanguage == nil)
+    }
+
+    private var cancelButton: some View {
+        Button(FeatureUpvoteL10n.L10n.Action.cancel) {
+            dismiss()
+        }
     }
 }
