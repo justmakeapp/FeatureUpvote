@@ -66,14 +66,14 @@ import SwiftUI
             }, label: {
                 Circle()
                     .fill(Color.accentColor)
-                    .frame(width: 52, height: 52)
+                    .frame(width: 52.scaledToMac(), height: 52.scaledToMac())
                     .overlay {
                         Image(systemName: "translate")
                             .font(.headline)
                             .foregroundStyle(.white)
                     }
             })
-
+            .buttonStyle(.plain)
             .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.03), radius: 3, x: 0, y: 4)
             .shadow(color: Color(red: 0.06, green: 0.09, blue: 0.16).opacity(0.08), radius: 8, x: 0, y: 12)
             .sheet(isPresented: $isShowTranslationConfigView) {
