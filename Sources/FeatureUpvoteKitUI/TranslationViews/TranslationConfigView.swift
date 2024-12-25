@@ -159,7 +159,7 @@ import FeatureUpvoteL10n
 
         private var switchButton: some View {
             Button {
-                var source = sourceLanguage
+                let source = sourceLanguage
                 sourceLanguage = targetLanguage
                 targetLanguage = source
             } label: {
@@ -174,12 +174,7 @@ import FeatureUpvoteL10n
                 .frame(maxWidth: 400)
                 #endif
             }
-            #if os(iOS)
             .buttonStyle(PressEffectButtonStyle())
-            #endif
-            #if os(macOS)
-            .buttonStyle(.borderedProminent)
-            #endif
             .disabled(sourceLanguage == nil || targetLanguage == nil)
         }
 

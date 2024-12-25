@@ -175,7 +175,7 @@ public struct FeatureUpvoteView_Previews: PreviewProvider {
     }
 
     public static var previews: some View {
-        NavigationView {
+        NavigationStack {
             FeatureUpvoteView(data: filterdData) { feature, translations in
                 FeatureCellView(
                     title: feature.name,

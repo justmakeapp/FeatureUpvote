@@ -61,8 +61,8 @@ public struct VoteButton: View {
                         .minimumScaleFactor(0.9)
                 }
             }
-            .frame(minWidth: 60)
-            .frame(minHeight: 60)
+            .frame(minWidth: 60.scaledToMac())
+            .frame(minHeight: 60.scaledToMac())
             .background(backgroundView)
             .contentShape(RoundedRectangle(cornerRadius: config.cornerRadius, style: .continuous))
             .overlay(overlayBorder)
@@ -114,7 +114,7 @@ public struct VoteButton: View {
 
 public extension VoteButton {
     struct Config {
-        var cornerRadius: CGFloat = 10
+        var cornerRadius: CGFloat = 10.scaledToMac()
         var onVote: (Bool) async throws -> Void = { _ in }
     }
 

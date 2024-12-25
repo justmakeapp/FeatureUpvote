@@ -59,7 +59,7 @@ public struct FeatureCellView: View {
 
     @ViewBuilder
     private var translationView: some View {
-        #if os(iOS)
+        #if os(macOS) || (os(iOS) && !targetEnvironment(macCatalyst))
             if let translatedTitle = config.translatedTitle, let translatedDesc = config.translatedDesc {
                 VStack(alignment: .leading) {
                     Text(translatedTitle)
@@ -72,16 +72,18 @@ public struct FeatureCellView: View {
                 .padding(.vertical, 6)
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .modifier {
-                    if #available(iOS 17.0, *) {
-                        $0
-                            .background(.background.secondary)
-                    } else {
-                        $0
-                            .background(Color(uiColor: .secondarySystemBackground))
-                    }
-                }
-
+                .background({
+                    #if os(macOS)
+                        if #available(macOS 14.0, *) {
+                            return Color(nsColor: .tertiarySystemFill)
+                        } else {
+                            return Color(nsColor: .unemphasizedSelectedContentBackgroundColor)
+                        }
+                    #endif
+                    #if os(iOS)
+                        return Color(uiColor: .tertiarySystemFill)
+                    #endif
+                }())
                 .cornerRadius(8)
             }
         #endif
