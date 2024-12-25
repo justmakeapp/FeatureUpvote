@@ -135,19 +135,52 @@ import FeatureUpvoteL10n
                             }
                             .frame(minWidth: 100, maxWidth: max(100, proxy.size.width / 2))
                         }
+
+                        HStack {
+                            Spacer()
+
+                            switchButton
+                        }
                     }
 
-                    #if os(iOS)
-                        translateButton
-                    #endif
-
                     Spacer()
+                    #if os(iOS)
+                        VStack {
+                            translateButton
+                        }
+                    #endif
                 }
                 .padding()
             }
             #if os(macOS)
             .frame(minHeight: 160)
             #endif
+        }
+
+        private var switchButton: some View {
+            Button {
+                var source = sourceLanguage
+                sourceLanguage = targetLanguage
+                targetLanguage = source
+            } label: {
+                HStack {
+                    Spacer()
+
+                    Label("Swap languages", systemImage: "rectangle.2.swap")
+                        .foregroundStyle(.tint)
+                }
+                #if os(iOS)
+                .frame(height: 44.scaledToMac())
+                .frame(maxWidth: 400)
+                #endif
+            }
+            #if os(iOS)
+            .buttonStyle(PressEffectButtonStyle())
+            #endif
+            #if os(macOS)
+            .buttonStyle(.borderedProminent)
+            #endif
+            .disabled(sourceLanguage == nil || targetLanguage == nil)
         }
 
         private var translateButton: some View {
