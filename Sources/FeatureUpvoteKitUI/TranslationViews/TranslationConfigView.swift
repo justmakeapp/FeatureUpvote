@@ -97,7 +97,7 @@ import FeatureUpvoteL10n
                             }
                         #endif
                     }
-                    .presentationDetents([.height(260)])
+                    .presentationDetents([.medium, .large])
             }
             .presentationDragIndicator(.visible)
         }
@@ -187,23 +187,16 @@ import FeatureUpvoteL10n
 
                 dismiss()
             } label: {
-                HStack {
-                    Label(FeatureUpvoteL10n.L10n.Action.translate, systemImage: "translate")
-                        .foregroundStyle(.white)
-                }
-                #if os(iOS)
-                .frame(height: 44.scaledToMac())
-                .frame(maxWidth: 400)
-                .background(Color.accentColor)
-                .cornerRadius(8)
-                #endif
+                Label(FeatureUpvoteL10n.L10n.Action.translate, systemImage: "translate")
             }
-            #if os(iOS)
-            .buttonStyle(PressEffectButtonStyle())
-            #endif
-            #if os(macOS)
-            .buttonStyle(.borderedProminent)
-            #endif
+            .modifier {
+                if #available(iOS 26, macOS 26.0, *) {
+                    $0.buttonStyle(.glassProminent)
+                } else {
+                    $0.buttonStyle(.borderedProminent)
+                }
+            }
+            .buttonBorderShape(.capsule)
             .disabled(sourceLanguage == nil && targetLanguage == nil)
         }
 
@@ -211,6 +204,7 @@ import FeatureUpvoteL10n
             Button(FeatureUpvoteL10n.L10n.Action.cancel) {
                 dismiss()
             }
+            .buttonBorderShape(.capsule)
         }
     }
 #endif
