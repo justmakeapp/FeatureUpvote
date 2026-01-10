@@ -22,7 +22,7 @@ public struct TagFilterView: View {
     }
 
     private var contentView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        ScrollView(.horizontal) {
             HStack {
                 ForEach(tags, id: \.self) { tag in
                     TagView(title: tag)
@@ -35,11 +35,12 @@ public struct TagFilterView: View {
                                 }
                             }
                         }
-                        .accentColor(config.tagColorMap[tag])
+                        .tint(config.tagColorMap[tag])
                 }
             }
             .padding(4)
         }
+        .scrollIndicators(.hidden)
         .listRowBackground(Color.clear)
     }
 }

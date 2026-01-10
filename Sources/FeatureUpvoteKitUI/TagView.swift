@@ -35,19 +35,31 @@ public struct TagView: View {
             HStack {
                 Text(title)
                     .font(.caption)
-                    .foregroundColor(isSelected ? .white : .accentColor)
+                    .modifier {
+                        if isSelected {
+                            $0.foregroundStyle(.white)
+                        } else {
+                            $0.foregroundStyle(.tint)
+                        }
+                    }
             }
             .padding(.vertical, 4)
             .padding(.horizontal)
-            .contentShape(Rectangle())
+            .contentShape(.rect)
         }
         .buttonStyle(.plain)
         .background {
             ZStack {
                 Capsule()
-                    .fill(isSelected ? Color.accentColor : Color.accentColor.opacity(0.1))
+                    .modifier {
+                        if isSelected {
+                            $0.fill(.tint)
+                        } else {
+                            $0.fill(.tint.opacity(0.1))
+                        }
+                    }
                 Capsule()
-                    .stroke(Color.accentColor, lineWidth: 1)
+                    .stroke(.tint, lineWidth: 1)
             }
         }
     }

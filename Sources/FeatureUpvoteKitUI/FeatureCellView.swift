@@ -37,7 +37,7 @@ public struct FeatureCellView: View {
                 VStack(alignment: .leading) {
                     TagView(title: tag)
                         .disabled()
-                        .accentColor(config.tagColorMap[tag])
+                        .tint(config.tagColorMap[tag])
 
                     Text(title)
                         .lineLimit(2)
