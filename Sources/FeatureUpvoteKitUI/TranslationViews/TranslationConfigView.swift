@@ -76,7 +76,6 @@ import FeatureUpvoteL10n
                 }
         }
 
-        @ViewBuilder
         private var containerView: some View {
             NavigationStack {
                 contentView

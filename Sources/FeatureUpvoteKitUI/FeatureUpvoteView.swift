@@ -47,7 +47,6 @@ public struct FeatureUpvoteView<
         contentView
     }
 
-    @ViewBuilder
     private var contentView: some View {
         ZStack {
             List {
