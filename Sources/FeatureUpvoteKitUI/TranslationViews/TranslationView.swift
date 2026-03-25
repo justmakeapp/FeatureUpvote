@@ -35,13 +35,10 @@ import SwiftUI
 
         var body: some View {
             contentView
-                .translationTask(configuration) { session in
+                // https://developer.apple.com/forums/thread/808786
+                .translationTask(configuration) { @Sendable [translatables] session in
                     do {
-                        let prepareTranslationTask = Task {
-                            try await session.prepareTranslation()
-                        }
-
-                        try await prepareTranslationTask.value
+                        try await session.prepareTranslation()
 
                         let batch: [TranslationSession.Request] = translatables
                             .flatMap { $0.makeTranslationSessionRequests() }
@@ -53,7 +50,9 @@ import SwiftUI
                         for try await response in batchResponse {
                             result.append(response)
                         }
-                        onReceiveTranslationResult(result.map { FeatureTranslation.Response(from: $0) })
+                        await MainActor.run {
+                            onReceiveTranslationResult(result.map { FeatureTranslation.Response(from: $0) })
+                        }
                     } catch {
                         print(error)
                     }

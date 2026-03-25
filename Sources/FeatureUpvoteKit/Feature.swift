@@ -45,7 +45,7 @@ public struct Feature: Hashable, Decodable, Identifiable, TranslatableFeature {
     }
 }
 
-public protocol TranslatableFeature {
+public protocol TranslatableFeature: Sendable {
     func makeTranslationSessionRequests() -> [FeatureTranslation.Request]
 }
 

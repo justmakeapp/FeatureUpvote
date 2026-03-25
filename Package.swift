@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version:6.2
 
 import PackageDescription
 
@@ -34,6 +34,5 @@ let package = Package(
                 "FeatureUpvoteL10n"
             ]
         ),
-    ],
-    swiftLanguageModes: [.v6]
+    ]
 )
