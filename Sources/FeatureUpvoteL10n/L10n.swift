@@ -69,6 +69,32 @@ public enum L10n {
         )
         /// Feature Voting
         public static let title = L10n.tr("Localizable", "featureVoting.title", fallback: "Feature Voting")
+        public enum HomeBanner {
+            /// Dismiss
+            public static let closeAccessibilityLabel = L10n.tr(
+                "Localizable",
+                "featureVoting.homeBanner.closeAccessibilityLabel",
+                fallback: "Dismiss"
+            )
+            /// Show all features
+            public static let showAll = L10n.tr(
+                "Localizable",
+                "featureVoting.homeBanner.showAll",
+                fallback: "Show all features"
+            )
+            /// Help shape MakeFlashcard by upvoting the features you want most.
+            public static let subtitle = L10n.tr(
+                "Localizable",
+                "featureVoting.homeBanner.subtitle",
+                fallback: "Help shape MakeFlashcard by upvoting the features you want most."
+            )
+            /// Vote on what's next
+            public static let title = L10n.tr(
+                "Localizable",
+                "featureVoting.homeBanner.title",
+                fallback: "Vote on what's next"
+            )
+        }
     }
 
     public enum SortOrder {

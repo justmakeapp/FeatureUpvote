@@ -2,6 +2,11 @@
 "featureVoting.title" = "Feature Voting";
 "featureVoting.subtitle" = "Share your desired new features and areas for improvement. Vote for your favorite features to enhance this application.";
 
+"featureVoting.homeBanner.title" = "Vote on what's next";
+"featureVoting.homeBanner.subtitle" = "Help shape MakeFlashcard by upvoting the features you want most.";
+"featureVoting.homeBanner.showAll" = "Show all features";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Dismiss";
+
 "empty" = "Empty";
 
 "action.later" = "Later";
