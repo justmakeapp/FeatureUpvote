@@ -28,10 +28,7 @@ public struct FeatureUpvoteHomeBanner: View {
     }
 
     public var body: some View {
-        if features.isEmpty {
-            EmptyView()
-                .frame(height: 0)
-        } else {
+        if !features.isEmpty {
             cardContent
         }
     }
@@ -43,6 +40,7 @@ public struct FeatureUpvoteHomeBanner: View {
             VStack(spacing: 8) {
                 ForEach(features) { feature in
                     featureRow(feature)
+                    Divider()
                 }
             }
 
@@ -96,8 +94,14 @@ public struct FeatureUpvoteHomeBanner: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundStyle(.secondary)
-                    .padding(6)
-                    .contentShape(.rect)
+                    .padding(8)
+                    .modifier {
+                        if #available(iOS 26, macOS 26, *) {
+                            $0.glassEffect(.regular.interactive(), in: Circle())
+                        } else {
+                            $0.contentShape(.rect)
+                        }
+                    }
             }
             .buttonStyle(.plain)
             .accessibilityLabel(Text(L10n.FeatureVoting.HomeBanner.closeAccessibilityLabel))
@@ -126,7 +130,7 @@ public struct FeatureUpvoteHomeBanner: View {
             .onVote { isVoting in
                 try await onVote(feature, isVoting)
             }
-            .frame(width: 48, height: 48)
+            .size(44.scaledToMac())
         }
     }
 }

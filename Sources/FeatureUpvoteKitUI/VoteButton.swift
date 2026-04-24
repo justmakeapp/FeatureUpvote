@@ -25,6 +25,7 @@ public struct VoteButton: View {
 
     private var config = Config()
     @State private var canTap = true
+    @State private var hapticTrigger = false
 
     public var body: some View {
         Button {
@@ -35,11 +36,7 @@ public struct VoteButton: View {
                 canTap = false
 
                 toggleVote()
-
-                #if os(iOS)
-                    let haptic = UIImpactFeedbackGenerator(style: .soft)
-                    haptic.impactOccurred()
-                #endif
+                hapticTrigger.toggle()
 
                 do {
                     try await config.onVote(hasVoted)
@@ -49,40 +46,43 @@ public struct VoteButton: View {
                 canTap = true
             }
         } label: {
-            VStack(spacing: isHovering ? 6 : 4) {
-                Image(systemName: "arrowtriangle.up.fill")
-                    .foregroundColor(hasVoted ? selectedForegroundColor : Color.accentColor)
-                    .font(.title3)
-                    .imageScale(.large)
-
-                if showNumber {
-                    Text("\(voteCount)")
-                        .foregroundColor(hasVoted ? selectedForegroundColor : Color.accentColor)
-                        .minimumScaleFactor(0.9)
-                }
+            if #available(iOS 26, macOS 26, *) {
+                labelContent
+                    .glassEffect(
+                        hasVoted ? Glass.regular.tint(Color.accentColor) : Glass.regular,
+                        in: RoundedRectangle(cornerRadius: config.cornerRadius, style: .continuous)
+                    )
+            } else {
+                labelContent
+                    .background(backgroundView)
+                    .contentShape(RoundedRectangle(cornerRadius: config.cornerRadius, style: .continuous))
+                    .overlay(overlayBorder)
             }
-            .frame(minWidth: 60.scaledToMac())
-            .frame(minHeight: 60.scaledToMac())
-            .background(backgroundView)
-            .contentShape(RoundedRectangle(cornerRadius: config.cornerRadius, style: .continuous))
-            .overlay(overlayBorder)
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.impact(flexibility: .soft), trigger: hapticTrigger)
         .onHover { newHover in
             withAnimation(.spring(response: 0.4, dampingFraction: 0.7, blendDuration: 0)) {
                 isHovering = newHover
             }
         }
-//        .onAppear {
-//            showNumber = viewModel.voteCount > 0
-//            withAnimation(.spring(response: 0.45, dampingFraction: 0.4, blendDuration: 0)) {
-//                hasVoted = viewModel.feature.hasVoted
-//            }
-//        }
-//        .accessibilityHint(viewModel.canVote ? Text("Vote for \(viewModel.feature.localizedFeatureTitle)") : Text(""))
-//        .help(viewModel.canVote ? "Vote for \(viewModel.feature.localizedFeatureTitle)" : "")
-//        .animateAccessible()
-//        .accessibilityShowsLargeContentViewer()
+    }
+
+    private var labelContent: some View {
+        VStack(spacing: isHovering ? 6 : 4) {
+            Image(systemName: "arrowtriangle.up.fill")
+                .foregroundColor(hasVoted ? selectedForegroundColor : Color.accentColor)
+
+            if showNumber {
+                Text("\(voteCount)")
+                    .foregroundStyle(hasVoted ? selectedForegroundColor : Color.accentColor)
+                    .contentTransition(.numericText())
+            }
+        }
+        .font(.system(size: config.size / 3))
+        .minimumScaleFactor(0.8)
+        .frame(minWidth: config.size)
+        .frame(minHeight: config.size)
     }
 
     private var selectedForegroundColor: Color {
@@ -115,11 +115,16 @@ public struct VoteButton: View {
 public extension VoteButton {
     struct Config {
         var cornerRadius: CGFloat = 10.scaledToMac()
+        var size: CGFloat = 60.scaledToMac()
         var onVote: (Bool) async throws -> Void = { _ in }
     }
 
     func onVote(_ value: @escaping (Bool) async throws -> Void) -> Self {
         then { $0.config.onVote = value }
+    }
+
+    func size(_ value: CGFloat) -> Self {
+        then { $0.config.size = value }
     }
 }
 
