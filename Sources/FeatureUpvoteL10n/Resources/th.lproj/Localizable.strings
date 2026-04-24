@@ -1,6 +1,10 @@
 "voteOnFeatures" = "โหวตฟีเจอร์";
 "featureVoting.title" = "การโหวตฟีเจอร์";
 "featureVoting.subtitle" = "แชร์ฟีเจอร์ใหม่ที่คุณต้องการและส่วนที่ควรพัฒนา โหวตฟีเจอร์ที่คุณชื่นชอบเพื่อพัฒนาแอปพลิเคชันนี้";
+"featureVoting.homeBanner.title" = "โหวตสิ่งที่จะมาถึง";
+"featureVoting.homeBanner.subtitle" = "ช่วยกำหนดทิศทางของ MakeFlashcard โดยโหวตฟีเจอร์ที่คุณต้องการมากที่สุด";
+"featureVoting.homeBanner.showAll" = "ดูฟีเจอร์ทั้งหมด";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "ปิด";
 "empty" = "ว่างเปล่า";
 "action.later" = "ภายหลัง";
 "action.create" = "สร้าง";

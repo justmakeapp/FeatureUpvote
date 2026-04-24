@@ -1,6 +1,10 @@
 "voteOnFeatures" = "次の新機能に投票する";
 "featureVoting.title" = "フィーチャー投票";
 "featureVoting.subtitle" = "希望する新機能や改善点を共有します。 このアプリケーションを強化するために、お気に入りの機能に投票してください。";
+"featureVoting.homeBanner.title" = "次に来るものに投票する";
+"featureVoting.homeBanner.subtitle" = "最も必要な機能に投票してMakeFlashcardを形作りましょう。";
+"featureVoting.homeBanner.showAll" = "すべての機能を表示";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "閉じる";
 
 "empty" = "空の";
 

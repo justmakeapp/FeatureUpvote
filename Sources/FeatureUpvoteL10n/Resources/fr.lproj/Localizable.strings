@@ -1,6 +1,10 @@
 "voteOnFeatures" = "Vota por las características";
 "featureVoting.title" = "Votación de características";
 "featureVoting.subtitle" = "Partagez vos nouvelles fonctionnalités souhaitées et les domaines à améliorer. Votez pour vos fonctionnalités préférées pour améliorer cette application.";
+"featureVoting.homeBanner.title" = "Votez pour la suite";
+"featureVoting.homeBanner.subtitle" = "Aidez à façonner MakeFlashcard en votant pour les fonctionnalités que vous souhaitez le plus.";
+"featureVoting.homeBanner.showAll" = "Afficher toutes les fonctionnalités";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Fermer";
 
 "empty" = "Vide";
 

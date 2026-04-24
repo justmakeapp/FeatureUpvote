@@ -1,6 +1,10 @@
 "voteOnFeatures" = "기능 투표";
 "featureVoting.title" = "기능 투표";
 "featureVoting.subtitle" = "원하는 새로운 기능과 개선할 영역을 공유하세요. 좋아하는 기능에 투표하여 이 애플리케이션을 향상시키세요.";
+"featureVoting.homeBanner.title" = "다음 기능에 투표하세요";
+"featureVoting.homeBanner.subtitle" = "원하는 기능에 투표하여 MakeFlashcard를 만들어 가세요.";
+"featureVoting.homeBanner.showAll" = "모든 기능 보기";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "닫기";
 
 "action.later" = "나중에";
 

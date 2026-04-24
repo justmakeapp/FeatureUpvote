@@ -1,6 +1,10 @@
 "voteOnFeatures" = "Bình chọn Tính năng";
 "featureVoting.title" = "Bầu Chọn Tính Năng";
 "featureVoting.subtitle" = "Chia sẻ các tính năng và lĩnh vực mới mong muốn của bạn để cải thiện. Bình chọn cho các tính năng yêu thích của bạn để nâng cao ứng dụng này.";
+"featureVoting.homeBanner.title" = "Bình chọn tính năng tiếp theo";
+"featureVoting.homeBanner.subtitle" = "Giúp định hình MakeFlashcard bằng cách bình chọn các tính năng bạn muốn nhất.";
+"featureVoting.homeBanner.showAll" = "Xem tất cả tính năng";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Đóng";
 
 "empty" = "Trống";
 

@@ -1,6 +1,10 @@
 "voteOnFeatures" = "Vota por las características";
 "featureVoting.title" = "Votación de características";
 "featureVoting.subtitle" = "Comparta las nuevas funciones que desea y las áreas de mejora. Vota por tus características favoritas para mejorar esta aplicación.";
+"featureVoting.homeBanner.title" = "Vota lo que viene";
+"featureVoting.homeBanner.subtitle" = "Ayuda a dar forma a MakeFlashcard votando por las funciones que más deseas.";
+"featureVoting.homeBanner.showAll" = "Mostrar todas las funciones";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Cerrar";
 
 "empty" = "Vacío";
 

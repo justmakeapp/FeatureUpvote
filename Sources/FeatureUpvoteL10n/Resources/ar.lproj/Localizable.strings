@@ -1,6 +1,10 @@
 "voteOnFeatures" = "صوّت على المزايا";
 "featureVoting.title" = "تصويت المزايا";
 "featureVoting.subtitle" = "شارك الميزات الجديدة المطلوبة والمناطق التي تحتاج إلى تحسين. صوّت على المزايا المفضلة لتعزيز هذا التطبيق.";
+"featureVoting.homeBanner.title" = "صوّت على ما هو قادم";
+"featureVoting.homeBanner.subtitle" = "ساعد في تشكيل MakeFlashcard بالتصويت للميزات التي تريدها أكثر.";
+"featureVoting.homeBanner.showAll" = "عرض جميع الميزات";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "إغلاق";
 "empty" = "فارغ";
 "action.later" = "لاحقًا";
 "action.create" = "إنشاء";

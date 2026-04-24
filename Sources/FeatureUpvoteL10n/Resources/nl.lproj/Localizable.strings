@@ -1,6 +1,10 @@
 "voteOnFeatures" = "Stem op functies";
 "featureVoting.title" = "Functiestemming";
 "featureVoting.subtitle" = "Deel uw gewenste nieuwe functies en verbeterpunten. Stem op uw favoriete functies om deze applicatie te verbeteren.";
+"featureVoting.homeBanner.title" = "Stem op wat er komt";
+"featureVoting.homeBanner.subtitle" = "Help MakeFlashcard vorm te geven door te stemmen op de functies die je het meest wilt.";
+"featureVoting.homeBanner.showAll" = "Alle functies tonen";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Sluiten";
 "empty" = "Leeg";
 "action.later" = "Later";
 "action.create" = "Aanmaken";

@@ -1,6 +1,10 @@
 "voteOnFeatures" = "Über Funktionen abstimmen";
 "featureVoting.title" = "Funktionsabstimmung";
 "featureVoting.subtitle" = "Teilen Sie Ihre gewünschten neuen Funktionen und Verbesserungsbereiche. Stimmen Sie für Ihre Lieblingsfunktionen ab, um diese Anwendung zu verbessern.";
+"featureVoting.homeBanner.title" = "Stimme ab, was als Nächstes kommt";
+"featureVoting.homeBanner.subtitle" = "Hilf dabei, MakeFlashcard zu gestalten, indem du für die Funktionen stimmst, die du am meisten möchtest.";
+"featureVoting.homeBanner.showAll" = "Alle Funktionen anzeigen";
+"featureVoting.homeBanner.closeAccessibilityLabel" = "Schließen";
 
 "empty" = "Leer";
 
