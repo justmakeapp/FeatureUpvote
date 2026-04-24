@@ -40,20 +40,17 @@ public struct FeatureUpvoteHomeBanner: View {
             VStack(spacing: 8) {
                 ForEach(features) { feature in
                     featureRow(feature)
-                    Divider()
+                    if features.last != feature {
+                        Divider()
+                    }
                 }
             }
+            .padding(.vertical, 4)
 
             HStack {
-                Spacer()
-                Button(action: onShowAll) {
-                    Text(L10n.FeatureVoting.HomeBanner.showAll)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                }
-                .buttonStyle(.plain)
-                .foregroundStyle(.tint)
+                seeAllButton
             }
+            .frame(maxWidth: .infinity)
         }
         .padding(16)
         .modifier {
@@ -79,7 +76,7 @@ public struct FeatureUpvoteHomeBanner: View {
         HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(L10n.FeatureVoting.HomeBanner.title)
-                    .font(.headline)
+                    .font(.title3)
                     .fontWeight(.semibold)
 
                 Text(L10n.FeatureVoting.HomeBanner.subtitle)
@@ -94,12 +91,14 @@ public struct FeatureUpvoteHomeBanner: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundStyle(.secondary)
-                    .padding(8)
+                    .padding(10)
                     .modifier {
                         if #available(iOS 26, macOS 26, *) {
                             $0.glassEffect(.regular.interactive(), in: Circle())
                         } else {
                             $0.contentShape(.rect)
+                                .background(.ultraThinMaterial)
+                                .clipShape(.circle)
                         }
                     }
             }
@@ -132,6 +131,25 @@ public struct FeatureUpvoteHomeBanner: View {
             }
             .size(44.scaledToMac())
         }
+    }
+
+    private var seeAllButton: some View {
+        Button(action: onShowAll) {
+            Text(L10n.FeatureVoting.HomeBanner.showAll)
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .padding(.vertical, 10)
+                .padding(.horizontal)
+                .modifier {
+                    if #available(iOS 26, macOS 26, *) {
+                        $0.glassEffect(.regular.interactive(), in: Capsule())
+                    } else {
+                        $0.background(Color.accentColor.opacity(0.12), in: Capsule())
+                    }
+                }
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(.tint)
     }
 }
 
