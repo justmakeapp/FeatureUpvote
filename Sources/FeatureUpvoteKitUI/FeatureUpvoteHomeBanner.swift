@@ -58,11 +58,23 @@ public struct FeatureUpvoteHomeBanner: View {
             }
         }
         .padding(16)
-        .background {
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color.accentColor.opacity(0.08))
+        .modifier {
+            if #available(iOS 26.0, macOS 26.0, *) {
+                $0.glassEffect(.regular, in: .rect(cornerRadius: 16))
+                    .clipShape(.rect(cornerRadius: 16))
+            } else {
+                $0.background {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(Color.accentColor.opacity(0.08))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(Color.accentColor.opacity(0.15), lineWidth: 1)
+                        }
+                }
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: 450)
+        .frame(maxWidth: .infinity)
     }
 
     private var headerRow: some View {
@@ -114,6 +126,7 @@ public struct FeatureUpvoteHomeBanner: View {
             .onVote { isVoting in
                 try await onVote(feature, isVoting)
             }
+            .frame(width: 48, height: 48)
         }
     }
 }
