@@ -34,5 +34,6 @@ let package = Package(
                 "FeatureUpvoteL10n"
             ]
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
