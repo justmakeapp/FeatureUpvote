@@ -11,7 +11,6 @@ import SwiftUI
 public struct FeatureUpvoteBottomCard: View {
     private var primaryAction: () -> Void
     private var secondaryAction: () -> Void
-    private var config = Config()
 
     public init(primaryAction: @escaping () -> Void, secondaryAction: @escaping () -> Void) {
         self.primaryAction = primaryAction
@@ -39,36 +38,38 @@ public struct FeatureUpvoteBottomCard: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            .padding(.bottom, 6)
 
-            Button {
-                primaryAction()
-            } label: {
-                HStack {
-                    Text(L10n.voteOnFeatures)
-                        .foregroundColor(.white)
+            VStack(spacing: 14.scaledToMac()) {
+                voteButton
+
+                Button(L10n.Action.later) {
+                    secondaryAction()
                 }
-                .frame(height: 44.scaledToMac())
-                .frame(maxWidth: 350.scaledToMac())
-                .background(Color.accentColor)
-                .cornerRadius(config.cornerRadius)
-            }
-            .buttonStyle(.plain)
-
-            Button(L10n.Action.later) {
-                secondaryAction()
             }
         }
         .padding()
     }
-}
 
-public extension FeatureUpvoteBottomCard {
-    struct Config {
-        var cornerRadius = CGFloat(10).scaledToMac()
-    }
-
-    func cornerRadius(_ value: CGFloat) -> Self {
-        then { $0.config.cornerRadius = value }
+    @ViewBuilder
+    private var voteButton: some View {
+        if #available(iOS 26, macOS 26, *) {
+            Button {
+                primaryAction()
+            } label: {
+                Text(L10n.voteOnFeatures)
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+        } else {
+            Button {
+                primaryAction()
+            } label: {
+                Text(L10n.voteOnFeatures)
+            }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+        }
     }
 }
 
