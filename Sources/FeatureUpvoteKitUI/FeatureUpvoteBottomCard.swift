@@ -38,11 +38,14 @@ public struct FeatureUpvoteBottomCard: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
+            .padding(.bottom, 6)
 
-            voteButton
+            VStack(spacing: 14.scaledToMac()) {
+                voteButton
 
-            Button(L10n.Action.later) {
-                secondaryAction()
+                Button(L10n.Action.later) {
+                    secondaryAction()
+                }
             }
         }
         .padding()
@@ -55,22 +58,17 @@ public struct FeatureUpvoteBottomCard: View {
                 primaryAction()
             } label: {
                 Text(L10n.voteOnFeatures)
-                    .frame(maxWidth: 350.scaledToMac())
             }
             .buttonStyle(.glassProminent)
             .buttonBorderShape(.capsule)
-            .controlSize(.large)
         } else {
             Button {
                 primaryAction()
             } label: {
                 Text(L10n.voteOnFeatures)
-                    .foregroundStyle(.white)
-                    .frame(height: 44.scaledToMac())
-                    .frame(maxWidth: 350.scaledToMac())
-                    .background(Color.accentColor, in: .capsule)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
         }
     }
 }
