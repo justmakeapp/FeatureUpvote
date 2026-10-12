@@ -11,7 +11,6 @@ import SwiftUI
 public struct FeatureUpvoteBottomCard: View {
     private var primaryAction: () -> Void
     private var secondaryAction: () -> Void
-    private var config = Config()
 
     public init(primaryAction: @escaping () -> Void, secondaryAction: @escaping () -> Void) {
         self.primaryAction = primaryAction
@@ -40,19 +39,7 @@ public struct FeatureUpvoteBottomCard: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
 
-            Button {
-                primaryAction()
-            } label: {
-                HStack {
-                    Text(L10n.voteOnFeatures)
-                        .foregroundColor(.white)
-                }
-                .frame(height: 44.scaledToMac())
-                .frame(maxWidth: 350.scaledToMac())
-                .background(Color.accentColor)
-                .cornerRadius(config.cornerRadius)
-            }
-            .buttonStyle(.plain)
+            voteButton
 
             Button(L10n.Action.later) {
                 secondaryAction()
@@ -60,15 +47,31 @@ public struct FeatureUpvoteBottomCard: View {
         }
         .padding()
     }
-}
 
-public extension FeatureUpvoteBottomCard {
-    struct Config {
-        var cornerRadius = CGFloat(10).scaledToMac()
-    }
-
-    func cornerRadius(_ value: CGFloat) -> Self {
-        then { $0.config.cornerRadius = value }
+    @ViewBuilder
+    private var voteButton: some View {
+        if #available(iOS 26, macOS 26, *) {
+            Button {
+                primaryAction()
+            } label: {
+                Text(L10n.voteOnFeatures)
+                    .frame(maxWidth: 350.scaledToMac())
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+            .controlSize(.large)
+        } else {
+            Button {
+                primaryAction()
+            } label: {
+                Text(L10n.voteOnFeatures)
+                    .foregroundStyle(.white)
+                    .frame(height: 44.scaledToMac())
+                    .frame(maxWidth: 350.scaledToMac())
+                    .background(Color.accentColor, in: .capsule)
+            }
+            .buttonStyle(.plain)
+        }
     }
 }
 
