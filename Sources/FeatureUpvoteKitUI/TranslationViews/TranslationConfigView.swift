@@ -200,7 +200,7 @@ import FeatureUpvoteL10n
         }
 
         private var cancelButton: some View {
-            Button(FeatureUpvoteL10n.L10n.Action.cancel) {
+            Button(FeatureUpvoteL10n.L10n.Action.cancel, systemImage: "xmark") {
                 dismiss()
             }
             .buttonBorderShape(.capsule)
